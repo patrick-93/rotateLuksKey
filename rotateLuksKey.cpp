@@ -30,8 +30,18 @@ int rotate_key(char *device) {
 	}
 	
 	r = crypt_load(cd, CRYPT_LUKS, NULL);
+
 	r = crypt_keyslot_change_by_passphrase(
-		cd, 0, 0, "secret_old_pw", 13, "secret_new_pw", 13
+		// ####### LINE TO CHANGE #######
+		// Syntax is:
+		//  cd		// ( Never change, this is internal )
+		//  old keyslot
+		//  new keyslot
+		//  old keyslot passphrase
+		//  old keyslot passphrase length
+		//  new keyslot passphrase
+		//  new keyslot passphrase length
+		cd, 0, 0, "old_password", 12, "StrongPassword", 14
 	);
 
 	if (r < 0) {
