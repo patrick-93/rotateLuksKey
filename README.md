@@ -3,12 +3,15 @@
 Rotate LUKS key is a small tool I came up with because someone
 super annoying somewhere came up with a requirement that all
 physical Linux servers have to have full disk encryption with
-keys being rotated every quarter.
+keys being rotated every quarter. I hate manually doing 
+things like that So I came up with this tool to change keys on 
+thousands of physical servers using Ansible in seconds.
 
-## I hate manually doing things like that
-
-So I came up with this tool to change keys on thousands of
-physical servers using Ansible in seconds.
+## How it works
+This tool uses the API in the cryptsetup development package to
+bind to a block device and change a key. To compile, the 
+cryptsetup-devel package must be installed. (May be called 
+something differently on Debian based distros)
 
 ## Requirements
 - Obviously have Linux servers that use LUKS
